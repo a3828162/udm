@@ -10,9 +10,9 @@ import (
 	"github.com/antihax/optional"
 
 	"github.com/free5gc/openapi"
-	"github.com/free5gc/openapi/Nudm_SubscriberDataManagement"
-	Nudr "github.com/free5gc/openapi/Nudr_DataRepository"
 	"github.com/free5gc/openapi/models"
+	Nudm_SubscriberDataManagement "github.com/free5gc/openapi/udm/SubscriberDataManagement"
+	Nudr "github.com/free5gc/openapi/udr/DataRepository"
 	udm_context "github.com/free5gc/udm/internal/context"
 	"github.com/free5gc/udm/internal/logger"
 	"github.com/free5gc/util/httpwrapper"
@@ -250,7 +250,6 @@ func getSupiProcedure(supi string, plmnID string, dataSetNames []string, support
 	var ueContextInSmfDataResp models.UeContextInSmfData
 	pduSessionMap := make(map[string]models.PduSession)
 	var pgwInfoArray []models.PgwInfo
-
 	var queryAmDataParamOpts Nudr.QueryAmDataParamOpts
 	queryAmDataParamOpts.SupportedFeatures = optional.NewString(supportedFeatures)
 	var querySmfSelectDataParamOpts Nudr.QuerySmfSelectDataParamOpts
@@ -1207,6 +1206,7 @@ func modifyProcedure(sdmSubsModification *models.SdmSubsModification, supi strin
 	}
 
 	sdmSubscription := models.SdmSubscription{}
+
 	body := Nudr.UpdatesdmsubscriptionsParamOpts{
 		SdmSubscription: optional.NewInterface(sdmSubscription),
 	}

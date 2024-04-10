@@ -13,6 +13,7 @@ import (
 
 func InitUDMContext(udmContext *context.UDMContext) {
 	config := factory.UdmConfig
+
 	logger.UtilLog.Info("udmconfig Info: Version[", config.Info.Version, "] Description[", config.Info.Description, "]")
 	configuration := config.Configuration
 	udmContext.NfId = uuid.New().String()
